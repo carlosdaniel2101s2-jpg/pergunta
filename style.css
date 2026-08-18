@@ -1,0 +1,1097 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --bg: #06060b;
+
+    --purple: #7c3aed;
+    --purple-light: #a855f7;
+
+    --blue: #2563eb;
+
+    --pink: #ec4899;
+
+    --white: #ffffff;
+
+    --soft-white:
+        rgba(255, 255, 255, 0.55);
+
+    --border:
+        rgba(255, 255, 255, 0.11);
+}
+
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    font-family:
+        "Inter",
+        sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(124, 58, 237, 0.22),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(37, 99, 235, 0.18),
+            transparent 30%
+        ),
+        var(--bg);
+
+}
+
+
+/* =========================
+   FUNDO
+========================= */
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: -5;
+
+}
+
+
+.grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        48px 48px;
+
+}
+
+
+.blob {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    opacity: 0.5;
+
+    animation:
+        blobMove
+        10s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+.blob-1 {
+
+    width: 500px;
+    height: 500px;
+
+    top: -180px;
+    left: -180px;
+
+    background:
+        var(--purple);
+
+}
+
+
+.blob-2 {
+
+    width: 520px;
+    height: 520px;
+
+    right: -180px;
+    bottom: -230px;
+
+    background:
+        var(--blue);
+
+    animation-delay:
+        -3s;
+
+}
+
+
+.blob-3 {
+
+    width: 330px;
+    height: 330px;
+
+    top: 40%;
+    left: 45%;
+
+    background:
+        var(--pink);
+
+    opacity: 0.17;
+
+    animation-delay:
+        -6s;
+
+}
+
+
+@keyframes blobMove {
+
+    from {
+
+        transform:
+            translate(0, 0)
+            scale(1);
+
+    }
+
+    to {
+
+        transform:
+            translate(80px, 50px)
+            scale(1.18);
+
+    }
+
+}
+
+
+/* =========================
+   BRILHO MOUSE
+========================= */
+
+.mouse-glow {
+
+    position: fixed;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(124, 58, 237, 0.13),
+            transparent 68%
+        );
+
+    z-index: -1;
+
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+
+    width:
+        min(680px, 96vw);
+
+    padding:
+        52px
+        40px
+        42px;
+
+    position: relative;
+
+    text-align: center;
+
+    border-radius:
+        32px;
+
+    /*
+        IMPORTANTE:
+        o botão NÃO pode
+        sair visualmente
+        do card.
+    */
+
+    overflow: visible;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.085),
+            rgba(255,255,255,0.035)
+        );
+
+    border:
+
+        1px solid
+        var(--border);
+
+    backdrop-filter:
+        blur(25px);
+
+    -webkit-backdrop-filter:
+        blur(25px);
+
+    box-shadow:
+
+        0
+        35px
+        100px
+        rgba(0,0,0,0.55),
+
+        inset
+        0
+        1px
+        0
+        rgba(255,255,255,0.08);
+
+    animation:
+        cardEnter
+        0.8s
+        cubic-bezier(.2,.8,.2,1);
+
+}
+
+
+@keyframes cardEnter {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.96);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+.top-light {
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 70%;
+    height: 1px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.8),
+            transparent
+        );
+
+}
+
+
+/* =========================
+   BADGE
+========================= */
+
+.badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        9px
+        15px;
+
+    margin-bottom:
+        22px;
+
+    border-radius:
+        999px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.7px;
+
+    text-transform:
+        uppercase;
+
+    color:
+        #d8b4fe;
+
+    background:
+
+        rgba(
+            124,
+            58,
+            237,
+            0.13
+        );
+
+    border:
+
+        1px solid
+        rgba(
+            168,
+            85,
+            247,
+            0.27
+        );
+
+}
+
+
+.badge-dot {
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        #a855f7;
+
+    box-shadow:
+        0 0 12px #a855f7;
+
+    animation:
+        pulse
+        1.5s
+        infinite;
+
+}
+
+
+@keyframes pulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+        opacity: 1;
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.5);
+
+        opacity: 0.5;
+
+    }
+
+}
+
+
+/* =========================
+   EMOJI
+========================= */
+
+.emoji {
+
+    font-size:
+        56px;
+
+    margin-bottom:
+        14px;
+
+    animation:
+        emojiFloat
+        3s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes emojiFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0)
+            rotate(-4deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-10px)
+            rotate(5deg);
+
+    }
+
+}
+
+
+/* =========================
+   TEXTOS
+========================= */
+
+.mini-title {
+
+    margin-bottom:
+        12px;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        3px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.4
+        );
+
+}
+
+
+h1 {
+
+    margin-bottom:
+        18px;
+
+    font-size:
+        clamp(
+            36px,
+            6vw,
+            62px
+        );
+
+    line-height:
+        0.98;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        -3px;
+
+}
+
+
+h1 span {
+
+    display: block;
+
+    margin-top:
+        8px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #d8b4fe,
+            #93c5fd
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+
+}
+
+
+.description {
+
+    margin-bottom:
+        25px;
+
+    color:
+        var(--soft-white);
+
+    font-size:
+        16px;
+
+}
+
+
+/* =========================
+   BOTÕES
+========================= */
+
+.buttons-area {
+
+    width: 100%;
+
+    height: 150px;
+
+    position: relative;
+
+    margin-top: 10px;
+
+    overflow: visible;
+
+}
+
+
+.btn {
+
+    height:
+        58px;
+
+    padding:
+        0
+        30px;
+
+    border:
+        none;
+
+    border-radius:
+        17px;
+
+    font-family:
+        inherit;
+
+    font-size:
+        16px;
+
+    font-weight:
+        800;
+
+    cursor:
+        pointer;
+
+    user-select:
+        none;
+
+}
+
+
+/* =========================
+   SIM
+========================= */
+
+.btn-sim {
+
+    position: absolute;
+
+    left:
+        27%;
+
+    top:
+        50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    min-width:
+        145px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    color:
+        white;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #2563eb
+        );
+
+    box-shadow:
+
+        0
+        15px
+        40px
+        rgba(
+            124,
+            58,
+            237,
+            0.35
+        );
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.btn-sim:hover {
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        scale(1.06);
+
+    box-shadow:
+
+        0
+        20px
+        55px
+        rgba(
+            124,
+            58,
+            237,
+            0.5
+        );
+
+}
+
+
+.btn-sim:active {
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        scale(0.95);
+
+}
+
+
+.arrow {
+
+    font-size:
+        22px;
+
+    transition:
+        transform .2s ease;
+
+}
+
+
+.btn-sim:hover
+.arrow {
+
+    transform:
+        translateX(5px);
+
+}
+
+
+/* =========================
+   NÃO
+========================= */
+
+.btn-nao {
+
+    position: absolute;
+
+    left:
+        68%;
+
+    top:
+        50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    min-width:
+        125px;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.78
+        );
+
+    background:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    border:
+
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    /*
+        JS controla left/top.
+    */
+
+    transition:
+        left .14s ease,
+        top .14s ease,
+        transform .14s ease,
+        background .2s ease;
+
+}
+
+
+.btn-nao:hover {
+
+    background:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.14
+        );
+
+}
+
+
+/* =========================
+   AVISO
+========================= */
+
+.warning {
+
+    margin-top:
+        8px;
+
+    font-size:
+        12px;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.25
+        );
+
+}
+
+
+/* =========================
+   DECORAÇÕES
+========================= */
+
+.decoration {
+
+    position: absolute;
+
+    border-radius:
+        50%;
+
+    filter:
+        blur(45px);
+
+    pointer-events:
+        none;
+
+}
+
+
+.decoration-1 {
+
+    width:
+        150px;
+
+    height:
+        150px;
+
+    top:
+        -70px;
+
+    right:
+        -60px;
+
+    background:
+
+        rgba(
+            124,
+            58,
+            237,
+            0.2
+        );
+
+}
+
+
+.decoration-2 {
+
+    width:
+        140px;
+
+    height:
+        140px;
+
+    bottom:
+        -70px;
+
+    left:
+        -50px;
+
+    background:
+
+        rgba(
+            37,
+            99,
+            235,
+            0.18
+        );
+
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+.footer {
+
+    position:
+        fixed;
+
+    bottom:
+        14px;
+
+    left:
+        0;
+
+    width:
+        100%;
+
+    text-align:
+        center;
+
+    font-size:
+        13px;
+
+    font-weight:
+        500;
+
+    letter-spacing:
+        0.7px;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.3
+        );
+
+    z-index:
+        5;
+
+    pointer-events:
+        none;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media
+(max-width: 600px) {
+
+    .container {
+
+        padding:
+            15px;
+
+    }
+
+
+    .card {
+
+        padding:
+            40px
+            20px
+            35px;
+
+        border-radius:
+            26px;
+
+    }
+
+
+    h1 {
+
+        font-size:
+            40px;
+
+        letter-spacing:
+            -2px;
+
+    }
+
+
+    .mini-title {
+
+        font-size:
+            10px;
+
+        letter-spacing:
+            2px;
+
+    }
+
+
+    .buttons-area {
+
+        height:
+            170px;
+
+    }
+
+
+    .btn {
+
+        height:
+            55px;
+
+        min-width:
+            115px;
+
+        padding:
+            0
+            22px;
+
+    }
+
+
+    .btn-sim {
+
+        left:
+            28%;
+
+    }
+
+
+    .btn-nao {
+
+        left:
+            72%;
+
+    }
+
+}
